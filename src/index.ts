@@ -1,14 +1,14 @@
-import express from "express";
+import express, {json} from "express";
 import { mainModule} from "process";
 import { sequelize } from './config/database';
-import User from "./models/User";
+import {usersRouter} from "./routes/userRoutes";
 
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(json());
+
+app.use(usersRouter);
 
 main()
 
@@ -17,13 +17,8 @@ async function main() {
     await sequelize.sync({ force: true}).then(() => {
       console.log('Database is synced');
       app.listen(port, () =>
-        console.log('listening at http://localhost:${port}'),
+      console.log('listening at http://localhost:${port}'),
       );
     });
-
-
-
-    const user = await User.create({ name: 'Alice', gmail: 'alice@email.com' });
-    console.log('Usuário criado:', user.toJSON());
   }
 }

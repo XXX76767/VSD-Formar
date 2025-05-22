@@ -42,7 +42,12 @@ export class UserService {
         if (user === null) throw { status: 404, message: 'User not Found' };
         await user.destroy();
     }
-};
+}
+
+
+export default new UserService();
+
+
 
 
 
