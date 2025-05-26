@@ -11,9 +11,3 @@ export const usersRouter = Router()
     .post("/users", createUser)
     .patch("/users/:id", updateUser)
     .delete("/users/:id", deleteUser);
-
-
-
-
-
-

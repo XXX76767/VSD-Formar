@@ -17,7 +17,7 @@ async function main() {
     await sequelize.sync({ force: true}).then(() => {
       console.log('Database is synced');
       app.listen(port, () =>
-      console.log('listening at http://localhost:${port}'),
+      console.log(`listening at http://localhost:${port}`),
       );
     });
   }
